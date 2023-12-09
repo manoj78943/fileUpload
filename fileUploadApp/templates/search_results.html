@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Search Results</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'file_upload_app/search_result.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'file_upload_app/nav_styles.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'file_upload_app/leftbar.css' %}" />
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    <div class="sidebar">{% include 'leftbar.html' %}</div>
+    <div class="main-content">
+        <h1>Search Results</h1>
+        <div class="user-list">
+            <ul class="user-details">
+                {% if users %}
+                {% for user in users %}
+                <li class="user-item">
+                    <div class="user-info">
+                        <div class="user-header">
+                            <div class="user-labels">
+                                <span class="username-label">Username:</span><br>
+                                <span class="email-label">Email:</span>
+                            </div>
+                            <div class="user-values">
+                                <span class="usernam">{{ user.username }}</span><br>
+                                <span class="email">{{ user.email }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-details">
+                        {% if user.uploadedfile_set.all %}
+                            <table class="file-table">
+                                <thead>
+                                    <tr>
+                                    <th>Serial No.</th>
+                                    <th>File Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for file in user.uploadedfile_set.all %}
+                                    <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td><a href="{{ file.file.url }}">{{ file.file.name }}</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <p class="no-files">No files uploaded by this user.</p>
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+                {% else %}
+                    <p class="no-files-message">No users found.</p>
+                    <a href="{% url 'search_users' %}" class="upload-button">Search Again</a>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+  </body>
+</html>

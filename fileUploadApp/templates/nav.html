@@ -1,0 +1,20 @@
+
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="{% url 'developer' %}" class="company-link">
+            <span class="company-name">KNOWL - Manoj Assignment</span>
+        </a>
+        {% comment %} <span class="company-name">KNOWL - Manoj Assignment</span> {% endcomment %}
+    </div>
+    <div class="navbar-right">
+        {% if user.is_authenticated %}
+            <span class="username">Welcome, {{ user.username }}</span>
+            <form action="{% url 'user_logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        {% else %}
+            <span class="not-logged-in">Not logged in</span>
+        {% endif %}
+    </div>
+</nav>

@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>File Upload</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'file_upload_app/upload_styles.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'file_upload_app/nav_styles.css' %}"
+    />
+    <link 
+      rel="stylesheet" 
+      href="{% static 'file_upload_app/leftbar.css' %}" 
+    />
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    <div class="sidebar">{% include 'leftbar.html' %}</div>
+    <div class="main-content">
+      <div>
+        <h1>Upload a File</h1>
+        <div class="upload-form">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="file-upload" class="upload-label"
+              >Select a file to upload:</label
+            >
+            <input
+              type="file"
+              name="file"
+              id="file-upload"
+              class="file-input"
+            />
+
+            <button type="submit" class="submit-button">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

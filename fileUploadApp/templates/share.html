@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Share Files</title>
+    <link rel="stylesheet" href="{% static 'file_upload_app/share.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'file_upload_app/nav_styles.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'file_upload_app/leftbar.css' %}" />
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    <div class="sidebar">{% include 'leftbar.html' %}</div>
+    <div class="main-content">
+      <h1>Share Files</h1>
+      {% if files %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial No.</th>
+                    <th>File Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in files %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><a href="{{ file.file.url }}">{{ file.file.name }}</a></td>
+                        <td>
+                            <button class="share-btn" data-file-id="{{ file.id }}">Share</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="no-files-message">No files uploaded yet.</p>
+        <a href="{% url 'file_upload' %}" class="upload-button">Upload a File</a>
+        {% endif %}
+
+    <!-- Modal for user selection -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Select Users to Share With</h2>
+            <form id="shareForm">
+                <!-- User selection options -->
+                {% for user in all_users %}
+                    <label>
+                        <input type="checkbox" name="selected_users" value="{{ user.id }}">
+                        {{ user.username }}
+                    </label>
+                {% endfor %}
+                <button type="submit">Share</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var fileId = 0;
+            $('.share-btn').click(function() {
+                fileId = $(this).attr('data-file-id');
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.checked = false;
+                });
+                $('#userModal').show();
+            });
+
+            $('.close-btn').click(function() {
+                $('#userModal').hide();
+            });
+
+            $('#shareForm').submit(function(e) {
+                e.preventDefault();
+                var selectedUsers = [];
+                $("input[name='selected_users']:checked").each(function () {
+                    selectedUsers.push($(this).val());
+                });
+
+                $.ajax({
+                    url: '/share-files/',
+                    method: 'POST',
+                    data: {
+                        'file_id': fileId,
+                        'selected_users': selectedUsers
+                    },
+                    success: function(response) {
+                        $('#userModal').hide();
+                        alert("Shared successfully");
+                    },
+                    error: function(error) {
+                        alert(error);
+                    }
+                });
+                $('#userModal').hide();
+            });
+        });
+    </script>
+</body>
+</html>

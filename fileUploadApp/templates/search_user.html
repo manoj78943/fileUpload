@@ -1,0 +1,40 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Search Users</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'file_upload_app/search_user.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'file_upload_app/nav_styles.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'file_upload_app/leftbar.css' %}" />
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    <div class="sidebar">{% include 'leftbar.html' %}</div>
+    <div class="main-content">
+      <h1>Search Profile</h1>
+      <div class="search-container">
+        <form
+          class="search-form"
+          method="get"
+          action="{% url 'search_results' %}"
+        >
+          <input
+            type="text"
+            class="search-input"
+            name="query"
+            placeholder="Search users..."
+          />
+          <button type="submit" class="search-button">Search</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

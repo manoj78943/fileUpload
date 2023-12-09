@@ -1,0 +1,123 @@
+
+.user-list {
+    padding: 20px;
+}
+
+.user-item {
+    margin-bottom: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.user-info {
+    margin-bottom: 20px;
+}
+.usernam {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.email {
+    margin: 5px 0;
+    color: #666;
+}
+
+.file-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.file-table th,
+.file-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.file-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.no-files {
+    font-style: italic;
+    color: #777;
+    margin: 0;
+    padding: 5px;
+}
+
+
+
+.user-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-labels,
+.user-values {
+    width: 50%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.username-label,
+.email-label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.usernam,
+.email {
+    color: #666;
+    text-align: right;
+
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    width: 75%;
+    margin-left: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.no-files-message {
+    font-style: italic;
+    color: #777;
+    margin-top: 20px;
+}
+
+.upload-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}

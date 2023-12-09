@@ -1,0 +1,55 @@
+
+ul {
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    width: 75%;
+    margin-left: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+
+.user-header {
+    display: flex;
+}
+
+.user-labels,
+.user-values {
+    width: 300px;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.username-label,
+.email-label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.usernam,
+.email {
+    color: #666;
+    text-align: right;
+
+}

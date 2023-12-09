@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Developer</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'file_upload_app/developer.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'file_upload_app/nav_styles.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'file_upload_app/leftbar.css' %}"
+    />
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    <div class="sidebar">{% include 'leftbar.html' %}</div>
+    <div class="main-content">
+      <h1>Developer</h1>
+      <div class="user-header">
+        <div class="user-labels">
+            <span class="username-label">Name</span><br>
+            <span class="email-label">Email</span><br>
+            <span class="email-label">Phone</span>
+        </div>
+        <div class="user-values">
+            <span class="usernam">Manoj Prajapati</span><br>
+            <span class="email">manojbittu161@gmail.com</span><br>
+            <span class="email">+91 9330391637</span>
+        </div>
+    </div>
+      
+  </body>
+</html>
